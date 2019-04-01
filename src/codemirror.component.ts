@@ -9,6 +9,7 @@ import {
   forwardRef,
   AfterViewInit,
   OnDestroy,
+  Attribute,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import * as CodeMirror from 'codemirror';
@@ -27,7 +28,7 @@ import * as CodeMirror from 'codemirror';
       multi: true
     }
   ],
-  template: `<textarea #host></textarea>`,
+  template: `<textarea #host [placeholder]="placeholder"></textarea>`,
 })
 export class CodemirrorComponent implements AfterViewInit, OnDestroy {
 
@@ -46,7 +47,7 @@ export class CodemirrorComponent implements AfterViewInit, OnDestroy {
   /**
    * Constructor
    */
-  constructor() {}
+  constructor(@Attribute('placeholder') public placeholder:string) {}
 
   get value() { return this._value; }
 
